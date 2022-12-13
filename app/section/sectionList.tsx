@@ -4,10 +4,12 @@ import groupBy from "lodash/groupBy";
 import moment from "moment";
 import SectionRow from "./sectionRow";
 
-const getMatches = async () => {
-  const res = await fetch("https://worldcupjson.net/matches");
-  return res.json();
-};
+export async function getMatches() {
+  const res = await fetch(`https://worldcupjson.net/matches`);
+  const data = await res.json();
+
+  return data;
+}
 
 export default async function SectionList() {
   const matches: Match[] = await getMatches();
